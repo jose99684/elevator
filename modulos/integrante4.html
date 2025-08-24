@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inversión y CTA de AgroConecta - Oportunidades de inversión para transformar el comercio agrícola en Nariño">
+    <meta name="keywords" content="AgroConecta, inversión, agricultura, Nariño, productores, sostenibilidad">
+    <meta name="author" content="AgroConecta">
+    <title>Inversión y CTA - AgroConecta</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #610eb4 50%, #f093fb 100%);
+            --accent-gradient: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            --highlight-color: #FFE66D;
+            --text-dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav-button {
+            position: fixed;
+            z-index: 1000;
+            background: linear-gradient(45deg, #66ff00, #4ECDC4);
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: var(--accent-gradient);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 140px;
+            animation: bounceIn 0.8s ease;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--highlight-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .investment-card {
+            background: rgba(255,255,255,0.95);
+            color: var(--text-dark);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .investment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .investment-title {
+            font-size: 1.6rem;
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .investment-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .investment-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .investment-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ECDC4;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-info {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .progress-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-step {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--highlight-color);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-step:hover {
+            background: var(--highlight-color);
+            color: var(--text-dark);
+            transform: scale(1.1);
+        }
+
+        .timeline-step::after {
+            content: attr(data-step);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            color: var(--text-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 90%;
+            width: 450px;
+            text-align: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .enthusiasm-meter {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .meter-bar {
+            background: #333;
+            height: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 8px;
+            transition: width 2s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .countdown-box {
+                min-width: 120px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-step {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../modulos\integrante3.html" class="nav-button" id="prevButton" aria-label="Ir a la página anterior">⬅ Anterior</a>
+
+    <div class="container">
+
+
+    
+    </div>
+
+   
+        <header class="hero-section" aria-label="Sección principal">
+            <h1 class="hero-title">🚀 ¡Es el Momento de Invertir!</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                Únete a la revolución del comercio agrícola en Nariño
+            </p>
+        </header>
+
+        <section class="countdown-container" aria-label="Estadísticas clave">
+            <div class="countdown-box" style="animation-delay: 0.2s;">
+                <span class="countdown-number" aria-live="polite">10,000+</span>
+                <div class="countdown-label">Productores Esperando</div>
+            </div>
+            <div class="countdown-box" style="animation-delay: 0.4s;">
+                <span class="countdown-number" aria-live="polite">67%</span>
+                <div class="countdown-label">Demanda Confirmada</div>
+            </div>
+            <div class="countdown-box" style="animation-delay: 0.6s;">
+                <span class="countdown-number" aria-live="polite">25%</span>
+                <div class="countdown-label">Incremento de Ingresos</div>
+            </div>
+        </section>
+
+        <section class="investment-grid" aria-label="Oportunidades de inversión">
+            <article class="investment-card" onclick="showInvestmentDetails('financiacion')" role="button" tabindex="0" aria-label="Detalles de financiación">
+                <h3 class="investment-title">💰 Financiación para Escalamiento</h3>
+                <ul class="investment-list">
+                    <li>Mejora y optimización de la plataforma tecnológica</li>
+                    <li>Expansión del alcance en el territorio nariñense</li>
+                    <li>Desarrollo de funcionalidades avanzadas</li>
+                    <li>Capacitación y soporte a productores</li>
+                    <li>Marketing digital y posicionamiento</li>
+                </ul>
+            </article>
+            <article class="investment-card" onclick="showInvestmentDetails('socios')" role="button" tabindex="0" aria-label="Detalles de socios estratégicos">
+                <h3 class="investment-title">🤝 Búsqueda de Socios Estratégicos</h3>
+                <ul class="investment-list">
+                    <li>Alianzas con organizaciones agrícolas</li>
+                    <li>Partnerships con cooperativas locales</li>
+                    <li>Colaboración con instituciones educativas</li>
+                    <li>Conexiones con entidades gubernamentales</li>
+                    <li>Network de distribuidores y retailers</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="progress-timeline" aria-label="Cronograma de progreso">
+            <div class="timeline-step" data-step="Inversión Inicial" onclick="showTimelineStep(1)" role="button" tabindex="0" aria-label="Paso 1: Inversión Inicial">1️⃣</div>
+            <div class="timeline-step" data-step="Desarrollo Plataforma" onclick="showTimelineStep(2)" role="button" tabindex="0" aria-label="Paso 2: Desarrollo Plataforma">2️⃣</div>
+            <div class="timeline-step" data-step="Piloto Regional" onclick="showTimelineStep(3)" role="button" tabindex="0" aria-label="Paso 3: Piloto Regional">3️⃣</div>
+            <div class="timeline-step" data-step="Expansión Total" onclick="showTimelineStep(4)" role="button" tabindex="0" aria-label="Paso 4: Expansión Total">4️⃣</div>
+            <div class="timeline-step" data-step="Escalabilidad Nacional" onclick="showTimelineStep(5)" role="button" tabindex="0" aria-label="Paso 5: Escalabilidad Nacional">5️⃣</div>
+        </section>
+
+        <section class="enthusiasm-meter" aria-label="Nivel de entusiasmo">
+            <h3>📊 Nivel de Entusiasmo del Equipo</h3>
+            <div class="meter-bar">
+                <div class="meter-fill" id="enthusiasmBar" style="width: 0;"></div>
+            </div>
+            <p><strong>¡Estamos al 100% comprometidos con esta visión transformadora!</strong></p>
+        </section>
+
+        <section class="cta-section" aria-label="Llamado a la acción">
+            <h2 style="font-size: 2rem; margin-bottom: 0.8rem;">🌱 Transformemos Juntos el Agro</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Cada inversión es una semilla que germinará en oportunidades para miles de familias rurales
+            </p>
+            <div class="cta-buttons">
+                <a class="cta-button" href="#contact" onclick="openContactModal()" aria-label="Contactar ahora">📧 Contactar Ahora</a>
+                <a class="cta-button" href="#schedule" onclick="scheduleMeeting()" aria-label="Agendar reunión">📅 Agendar Reunión</a>
+                <a class="cta-button" href="#download" onclick="downloadPresentation()" aria-label="Descargar presentación">📄 Descargar Presentación</a>
+            </div>
+        </section>
+
+        <section class="contact-info" aria-label="Información de contacto">
+            <h3 style="margin-bottom: 0.8rem;">📞 Información de Contacto</h3>
+            <p><strong>Email:</strong> info@agroconecta.co</p>
+            <p><strong>Teléfono:</strong> +57 (2) 123-4567</p>
+            <p><strong>Ubicación:</strong> Pasto, Nariño - Colombia</p>
+            <p style="margin-top: 0.8rem; font-style: italic;">
+                "Juntos podemos llevar esta solución a miles de productores y consumidores, generando impacto y rentabilidad."
+            </p>
+        </section>
+    </div>
+
+    <div class="modal" id="contactModal" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()" aria-label="Cerrar modal">&times;</button>
+            <h2 id="modalTitle" style="color: #667eea;">🚀 ¡Hablemos!</h2>
+            <p>Estamos emocionados de conectar contigo y explorar cómo podemos trabajar juntos para revolucionar el comercio agrícola en Nariño.</p>
+            <div style="margin: 1.5rem 0;">
+                <p><strong>📧 Email:</strong> inversion@agroconecta.co</p>
+                <p><strong>📱 WhatsApp:</strong> +57 300 123 4567</p>
+                <p><strong>⏰ Disponibilidad:</strong> Lun-Vie 8AM-6PM</p>
+            </div>
+            <button class="cta-button" onclick="closeModal()" style="background: #667eea; border-color: #667eea;" aria-label="Cerrar y continuar">✨ ¡Perfecto, nos vemos pronto!</button>
+        </div>
+    </div>
+
+    <script>
+        // Animate enthusiasm bar on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const enthusiasmBar = document.getElementById('enthusiasmBar');
+                if (enthusiasmBar) {
+                    enthusiasmBar.style.width = '100%';
+                }
+            }, 1000);
+
+            createFloatingElements();
+        });
+
+        // Show investment details
+        function showInvestmentDetails(type) {
+            const messages = {
+                'financiacion': '💰 La inversión inicial nos permitirá escalar la tecnología y llegar a más productores. ¡ROI proyectado del 300% en 2 años!',
+                'socios': '🤝 Buscamos socios estratégicos que compartan nuestra visión de empoderar a los productores rurales y transformar el agro colombiano.'
+            };
+
+            if (messages[type]) {
+                alert(messages[type]);
+            }
+        }
+
+        // Show timeline step details
+        function showTimelineStep(step) {
+            const steps = {
+                1: 'Inversión inicial para desarrollo tecnológico y equipo base',
+                2: 'Construcción y optimización de la plataforma digital',
+                3: 'Implementación piloto en 3 municipios de Nariño',
+                4: 'Expansión completa en todo el departamento de Nariño',
+                5: 'Replicación del modelo en otros departamentos de Colombia'
+            };
+
+            if (steps[step]) {
+                alert(`Paso ${step}: ${steps[step]}`);
+            }
+        }
+
+        // Modal controls
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Schedule meeting
+        function scheduleMeeting() {
+            alert('📅 ¡Excelente! Te contactaremos en las próximas 24 horas para coordinar una reunión. Mientras tanto, puedes enviarnos un email con tus horarios preferidos.');
+        }
+
+        // Download presentation
+        function downloadPresentation() {
+            alert('📄 La presentación completa será enviada a tu email. ¡Gracias por tu interés en AgroConecta!');
+        }
+
+        // Create floating elements
+        function createFloatingElements() {
+            const container = document.body;
+            const elements = ['🌱', '🚀', '💰'];
+            const count = 10;
+
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                element.style.position = 'fixed';
+                element.style.fontSize = '1.5rem';
+                element.style.opacity = '0.3';
+                element.style.pointerEvents = 'none';
+                element.style.zIndex = '1';
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.top = `${Math.random() * 100}vh`;
+
+                const duration = 5 + Math.random() * 5;
+                element.style.animation = `float ${duration}s ease-in-out infinite`;
+
+                container.appendChild(element);
+            }
+        }
+
+        // Add keyboard accessibility for interactive elements
+        document.querySelectorAll('.investment-card, .timeline-step').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    element.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

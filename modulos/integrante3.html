@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mercado y Datos de AgroConecta - Información sobre impacto y oportunidades en el mercado agrícola de Nariño">
+    <meta name="keywords" content="AgroConecta, agricultura, Nariño, mercado local, productores">
+    <meta name="author" content="AgroConecta">
+    <title>Mercado y Datos - AgroConecta</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --accent-gradient: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            --highlight-color: #FFE66D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            color: white;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+        .nav-button {
+            position: fixed;
+            z-index: 1000;
+            background: linear-gradient(45deg, #66ff00, #4ECDC4);
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        
+        .some-class {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        
+
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .chart-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .impact-chart {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 200px;
+            margin: 1.5rem 0;
+            gap: 1rem;
+        }
+
+        .bar {
+            flex: 0 0 80px;
+            background: var(--accent-gradient);
+            border-radius: 8px 8px 0 0;
+            transition: height 1.5s ease-out;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: #555;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .market-map {
+            background: linear-gradient(135deg, #6f78a1 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--highlight-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .map-point:hover {
+            transform: scale(1.3);
+            background: #FF6B6B;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 230, 109, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(255, 230, 109, 0); }
+        }
+
+        .interactive-button {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .interactive-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--highlight-color);
+            font-style: italic;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bar {
+                flex: 0 0 60px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../modulos\integrante4.html" class="nav-button" id="nextButton" aria-label="Ir a la página siguiente">⬅ Siguiente</a>
+</div>
+<a href="../modulos\integrante2.html" class="nav-button" id="prevButton" aria-label="Ir a la página anterior">⬅ Anterior</a>
+</div>
+     
+        <header class="header">
+            
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.8rem;">📊 Mercado y Datos de Impacto</h1>
+            <p style="font-size: 1.2rem;">Evidencia sólida para una inversión inteligente</p>
+        </header>
+
+        <section class="stats-grid" aria-label="Estadísticas principales">
+            <div class="stat-card" style="animation-delay: 0.2s;">
+                <span class="stat-number" id="productores" aria-live="polite">0</span>
+                <div class="stat-label">Pequeños Productores Potenciales en Nariño</div>
+            </div>
+            <div class="stat-card" style="animation-delay: 0.4s;">
+                <span class="stat-number" id="perdida" aria-live="polite">0%</span>
+                <div class="stat-label">Pérdida de Ingresos por Intermediación</div>
+            </div>
+            <div class="stat-card" style="animation-delay: 0.6s;">
+                <span class="stat-number" id="preferencia" aria-live="polite">0%</span>
+                <div class="stat-label">Consumidores Prefieren Productos Locales</div>
+            </div>
+        </section>
+
+        <section class="chart-container" aria-label="Impacto de AgroConecta">
+            <h2 style="text-align: center; color: #1e3c72; margin-bottom: 1.5rem;">📈 Impacto Medible de AgroConecta</h2>
+            <div class="impact-chart">
+                <div class="bar" id="bar1" style="height: 0;" aria-label="Incremento en Ingresos">
+                    <span style="writing-mode: vertical-rl;">+25%</span>
+                    <div class="bar-label">Incremento en<br>Ingresos</div>
+                </div>
+                <div class="bar" id="bar2" style="height: 0;" aria-label="Reducción de Intermediarios">
+                    <span style="writing-mode: vertical-rl;">40%</span>
+                    <div class="bar-label">Reducción de<br>Intermediarios</div>
+                </div>
+                <div class="bar" id="bar3" style="height: 0;" aria-label="Productores Beneficiados">
+                    <span style="writing-mode: vertical-rl;">10,000+</span>
+                    <div class="bar-label">Productores<br>Beneficiados</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button class="interactive-button" onclick="animateChart()">📊 Mostrar Resultados</button>
+                <button class="interactive-button" onclick="showTestimonial()">💬 Ver Testimonios</button>
+            </div>
+            <div class="testimonial hidden" id="testimonial">
+                <h4>👩‍🌾 María - Productora de Frutas</h4>
+                <p>"Con AgroConecta pude vender directamente a los consumidores. Ahora obtengo precios justos y mi familia tiene mejor calidad de vida."</p>
+            </div>
+        </section>
+
+        <section class="market-map" aria-label="Mapa de oportunidades en Nariño">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">🗺️ Mapa de Oportunidad - Nariño</h2>
+                
+                <div class="map-point" style="top: 40%; left: 60%;" onclick="showRegionInfo('Tumaco')" aria-label="Información sobre Tumaco">
+                    <div class="tooltip" style="position: absolute; top: -40px; left: -30px; background: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s;">Tumaco</div>
+                </div>
+                <div class="map-point" style="top: 60%; left: 20%;" onclick="showRegionInfo('Ipiales')" aria-label="Información sobre Ipiales">
+                    <div class="tooltip" style="position: absolute; top: -40px; left: -30px; background: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s;">Ipiales</div>
+                </div>
+                <div class="map-point" style="top: 30%; left: 80%;" onclick="showRegionInfo('Samaniego')" aria-label="Información sobre Samaniego">
+                    <div class="tooltip" style="position: absolute; top: -40px; left: -30px; background: rgba(0,0,0,0.8); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s;">Samaniego</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p><strong>📍 Haz clic en los puntos para explorar las oportunidades por región</strong></p>
+            </div>
+            <div class="hidden" id="regionInfo" style="background: rgba(255,255,255,0.9); color: #333; padding: 1.2rem; border-radius: 12px; margin-top: 1rem;">
+                <h3 id="regionName" aria-live="polite"></h3>
+                <p id="regionData"></p>
+            </div>
+        </section>
+
+        <section style="background: var(--accent-gradient); border-radius: 15px; padding: 1.5rem; text-align: center; margin-top: 2rem;">
+            <h2 style="margin-bottom: 0.8rem;">🎯 Mercado en Crecimiento</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 0.8rem;">El mercado de productos locales y sostenibles está en constante expansión</p>
+            <button class="interactive-button" onclick="showMarketTrends()" style="background: rgba(255,255,255,0.2); border: 2px solid white;">📈 Ver Tendencias del Mercado</button>
+            <div class="hidden" id="marketTrends" style="margin-top: 1.5rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 700;">+15%</div>
+                        <div>Crecimiento anual demanda orgánica</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 700;">85%</div>
+                        <div>Disposición a pagar más por productos locales</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 700;">3x</div>
+                        <div>Crecimiento esperado en 5 años</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth number animation with requestAnimationFrame
+        function animateNumber(id, target, suffix = '', duration = 2000) {
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            const start = performance.now();
+            const increment = target / (duration / 16); // 60fps approximation
+
+            function update() {
+                const elapsed = performance.now() - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(target * progress);
+                
+                element.textContent = current + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Animate chart with smooth transitions
+        function animateChart() {
+            const bars = [
+                { id: 'bar1', height: 150 },
+                { id: 'bar2', height: 120 },
+                { id: 'bar3', height: 180 }
+            ];
+
+            bars.forEach(bar => {
+                const element = document.getElementById(bar.id);
+                if (element) element.style.height = `${bar.height}px`;
+            });
+        }
+
+        // Toggle testimonial visibility
+        function showTestimonial() {
+            const testimonial = document.getElementById('testimonial');
+            if (testimonial) {
+                testimonial.classList.toggle('hidden');
+                if (!testimonial.classList.contains('hidden')) {
+                    testimonial.classList.add('slide-in');
+                }
+            }
+        }
+
+
+        
+
+        // Show region information with error handling
+        function showRegionInfo(region) {
+            const info = document.getElementById('regionInfo');
+            const name = document.getElementById('regionName');
+            const data = document.getElementById('regionData');
+
+            if (!info || !name || !data) return;
+
+            const regionData = {
+                'Pasto': 'Capital de Nariño con 2,500+ productores rurales. Alto potencial para cultivos de clima frío y productos lácteos.',
+                'Tumaco': 'Puerto principal con 1,800+ productores. Especializado en cacao, plátano y productos del mar.',
+                'Ipiales': 'Frontera con Ecuador, 1,200+ productores. Oportunidad única para comercio transfronterizo.',
+                'Samaniego': 'Zona cafetera con 900+ productores. Café de alta calidad y productos orgánicos certificados.'
+            };
+
+            if (regionData[region]) {
+                name.textContent = `📍 ${region}`;
+                data.textContent = regionData[region];
+                info.classList.remove('hidden');
+                info.classList.add('slide-in');
+            }
+        }
+
+        // Toggle market trends visibility
+        function showMarketTrends() {
+            const trends = document.getElementById('marketTrends');
+            if (trends) {
+                trends.classList.toggle('hidden');
+                if (!trends.classList.contains('hidden')) {
+                    trends.classList.add('slide-in');
+                }
+            }
+        }
+
+        // Initialize map point tooltips
+        function initializeTooltips() {
+            document.querySelectorAll('.map-point').forEach(point => {
+                const tooltip = point.querySelector('.tooltip');
+                if (!tooltip) return;
+
+                point.addEventListener('mouseenter', () => {
+                    tooltip.style.opacity = '1';
+                });
+
+                point.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+
+                // Add keyboard accessibility
+                point.addEventListener('focus', () => {
+                    tooltip.style.opacity = '1';
+                });
+
+                point.addEventListener('blur', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            initializeTooltips();
+            
+            setTimeout(() => animateNumber('productores', 10000), 500);
+            setTimeout(() => animateNumber('perdida', 40, '%'), 1000);
+            setTimeout(() => animateNumber('preferencia', 67, '%'), 1500);
+            setTimeout(animateChart, 3000);
+        });
+    </script>
+</body>
+</html>

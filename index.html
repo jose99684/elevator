@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema y Solución - AgroConecta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E8B57, #90EE90);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2rem;
+            gap: 3rem;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.95);
+            color: #2E8B57;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 45%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-10px);
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #FF6B6B;
+        }
+        
+        .stat-box {
+            background: linear-gradient(45deg, #FF6B6B, #FFE66D);
+            color: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            display: block;
+        }
+        
+        .solution-feature {
+            background: #2E8B57;
+            color: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 5px solid #90EE90;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .interactive-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .nav-button {
+            position: fixed;
+            z-index: 1000;
+            background: linear-gradient(45deg, #c4c0c0, #4ECDC4);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .interactive-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .maria-story {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            border: 2px solid #90EE90;
+        }
+    </style>
+</head>
+<body>
+    <a href="modulos\integrante2.html" class="nav-button" id="nextButton">Siguiente ➡</a>
+</div>
+    <div class="header">
+        <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">🌱 AgroConecta Nariño</h1>
+        <p style="font-size: 1.3rem;">Conectando Productores con Consumidores</p>
+    </div>
+    
+    <div class="main-content">
+        <div class="section">
+            <h2>❌ EL PROBLEMA</h2>
+            
+            <div class="stat-box">
+                <span class="stat-number">40%</span>
+                <span>de ingresos perdidos por intermediarios</span>
+            </div>
+            
+            <div class="stat-box">
+                <span class="stat-number">67%</span>
+                <span>de consumidores prefiere productos locales</span>
+            </div>
+            
+            <div class="stat-box">
+                <span class="stat-number">40%</span>
+                <span>no sabe cómo acceder a productos locales</span>
+            </div>
+            
+            <button class="interactive-btn" onclick="showMariaStory()">
+                👩‍🌾 Conoce la Historia de María
+            </button>
+            
+            <div class="maria-story hidden" id="mariaStory">
+                <h3>👩‍🌾 María - Productora Rural</h3>
+                <p><strong>María cultiva frutas frescas en Nariño, pero cada semana los intermediarios se quedan con casi la mitad de sus ganancias, dejándola con apenas lo suficiente para mantener su hogar.</strong></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✅ NUESTRA SOLUCIÓN</h2>
+            
+            <div class="solution-feature">
+                <strong>🔗 Conexión Directa</strong><br>
+                Eliminamos intermediarios innecesarios
+            </div>
+            
+            <div class="solution-feature">
+                <strong>📱 Plataforma Digital</strong><br>
+                Tecnología intuitiva y accesible
+            </div>
+            
+            <div class="solution-feature">
+                <strong>💰 Precios Justos</strong><br>
+                Productores obtienen mejor rentabilidad
+            </div>
+            
+            <div class="solution-feature">
+                <strong>🥬 Productos Frescos</strong><br>
+                Consumidores acceden a productos locales
+            </div>
+            
+            <button class="interactive-btn" onclick="showImpact()">
+                📈 Ver Impacto Medido
+            </button>
+            
+            <div class="hidden" id="impact">
+                <div class="stat-box" style="background: linear-gradient(45deg, #4CAF50, #45a049); margin-top: 1rem;">
+                    <span class="stat-number">+25%</span>
+                    <span>Incremento en ingresos de productores</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showMariaStory() {
+            const story = document.getElementById('mariaStory');
+            story.classList.toggle('hidden');
+        }
+        
+        function showImpact() {
+            const impact = document.getElementById('impact');
+            impact.classList.toggle('hidden');
+        }
+        
+        // Animación de entrada
+        window.addEventListener('load', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(50px)';
+                    section.style.transition = 'all 0.6s ease';
+                    setTimeout(() => {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 300);
+            });
+        });
+    </script>
+</body>
+</html>
